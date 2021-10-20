@@ -7,6 +7,8 @@ const defaultCartState = {
   totalAmount: 0,
 }
 
+// 'cartReducer' is outside of the component function because it won't need anything from the component
+// and because it shouldn't be recreated every time the component is re-evaluated
 const cartReducer = (state, action) => {
   if(action.type === 'ADD') {
     const updatedTotalAmount = state.totalAmount + (action.item.price * action.item.amount);
@@ -54,8 +56,6 @@ const cartReducer = (state, action) => {
 
   return defaultCartState
 };
-// 'cartReducer' is outside of the component function because it won't need anything from the component
-// and because it shouldn't be recreated every time the component is re-evaluated
 
 const CartProvider = props => {
   const [cartState, dispatchCartAction] = useReducer(cartReducer, defaultCartState);
