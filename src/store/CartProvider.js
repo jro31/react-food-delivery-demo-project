@@ -9,13 +9,25 @@ const defaultCartState = {
 
 const cartReducer = (state, action) => {
   if(action.type === 'ADD') {
-    const updatedItems = state.items.concat(action.item);
-    // We use 'concat()' instead of 'push()', because concat returns a new array
-    // 'push()' updates the existing array, which we don't want to do
-    // You don't want to edit your old state snapshot, because it would get edited in memory without React knowing about it
-    // Instead you want to create a brand new state object, and return that
-
     const updatedTotalAmount = state.totalAmount + (action.item.price * action.item.amount);
+
+    const existingCartItemIndex = state.items.findIndex((item) => item.id === action.item.id);
+    const existingCartItem = state.items[existingCartItemIndex];
+    let updatedItems;
+
+    if (existingCartItem) {
+      const updatedItem = { ...existingCartItem, amount: existingCartItem.amount + action.item.amount, };
+      updatedItems = [...state.items];
+      updatedItems[existingCartItemIndex] = updatedItem;
+    } else {
+      updatedItems = state.items.concat(action.item);
+      // We use 'concat()' instead of 'push()', because concat returns a new array
+      // 'push()' updates the existing array, which we don't want to do
+      // You don't want to edit your old state snapshot, because it would get edited in memory without React knowing about it
+      // Instead you want to create a brand new state object, and return that
+    };
+
+
     return {
       items: updatedItems,
       totalAmount: updatedTotalAmount,
