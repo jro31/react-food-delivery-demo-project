@@ -31,7 +31,8 @@ const HeaderCartButton = props => {
 
     const timer = setTimeout(() => { setBtnIsHighlighted(false) }, 300); // Calls 'setBtnIsHighlighted(false)' after 300ms
 
-    // This is the clean up function - It's called automatically, immediately before useEffect is next called (after the rest of the component is re-rendered)
+    // Returning a function in useEffect, it is a 'clean-up function'
+    // It's called automatically, immediately before useEffect is next called (after the rest of the component is re-rendered)
     // It's good practice to 'clean-up' any timers (or other side effects) that might be ongoing because you started them in useEffect
     return () => { clearTimeout(timer) };
   }, [items]);
