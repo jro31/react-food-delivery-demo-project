@@ -1,4 +1,4 @@
-The given example for *'Section 11: Practice Project: Building a Food Order App'* of Academind's *'React - The Complete Guide'* course. The commits include examples of:
+The given example for *'Section 11: Practice Project: Building a Food Order App'* of Academind's *['React - The Complete Guide'](https://acad.link/reactjs)* course. The commits include examples of:
 
 * Displaying images stored locally - [Commit link](https://github.com/jro31/react-food-delivery-demo-project/commit/e2b7d011db40c75180cab89c986deaec28a787d2)
 * An example of using the spread operator with an `<input>` tag to pass-in a object of attributes - [Commit link](https://github.com/jro31/react-food-delivery-demo-project/commit/7ab3eca237de835cf3e9c6605fa55bcce89c1d21)
